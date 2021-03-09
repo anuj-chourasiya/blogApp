@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
+'''
 if 'DATABASE_URL' in os.environ:
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=False)}
@@ -86,7 +86,17 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ['NAME'],
+        'HOST' : os.environ['HOST'],
+        'PORT' : os.environ['PORT'],
+        'USER' : os.environ['USER'],
+        'PASSWORD' : os.environ['PASSWORD']
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
