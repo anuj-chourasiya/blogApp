@@ -1,2 +1,2 @@
-release: python3 mysite/manage.py migrate
-web: gunicorn mysite.wsgi
+release: python3 portfolio/manage.py migrate
+web: python3 scripts/start_server.py prod
